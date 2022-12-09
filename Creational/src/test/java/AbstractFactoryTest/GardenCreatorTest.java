@@ -1,8 +1,13 @@
 package AbstractFactoryTest;
 
+import AbstractFactory.AbstractFactoryClient;
+import AbstractFactory.Factories.GardenFactory;
+import AbstractFactory.Factories.JapaneseGardenFactory;
+import AbstractFactory.Factories.PersianGardenFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class GardenCreatorTest {
     private AbstractFactoryClient abstractFactoryClient;
