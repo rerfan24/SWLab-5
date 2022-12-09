@@ -1,5 +1,11 @@
 package BuilderTest;
 
+import Builder.Builders.HardDriveBuilder;
+import Builder.Builders.USBBuilder;
+import Builder.Components.DriveType;
+import Builder.Director;
+import Builder.Drives.HardDrive;
+import Builder.Drives.USB;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +27,7 @@ public class StorageBuilderTest {
     public void buildHDDHardDriveTest() {
         director.buildHDDStorage(hardDriveBuilder);
         HardDrive drive = hardDriveBuilder.getResults();
-        Assert.assertEquals("HDD", drive.getDriveType());
+        Assert.assertEquals(DriveType.HDD, drive.getDriveType());
         Assert.assertEquals(1000, drive.getStorageInGigabye());
         Assert.assertEquals(300, drive.getWeightInGrams());
     }
@@ -30,22 +36,22 @@ public class StorageBuilderTest {
     public void buildSSDHardDrive() {
         director.buildSSDStorage(hardDriveBuilder);
         HardDrive drive = hardDriveBuilder.getResults();
-        Assert.assertEquals("SSD", drive.getDriveType());
+        Assert.assertEquals(DriveType.SSD, drive.getDriveType());
         Assert.assertEquals(500, drive.getStorageInGigabye());
         Assert.assertEquals(200, drive.getWeightInGrams());
     }
 
     @Test
     public void buildHDDUSB() {
-        director.buildHDDStorage(usbBuilder);
+        director.buildLightHDDStorage(usbBuilder);
         USB usb = usbBuilder.getResults();
-        Assert.assertEquals("HDD usb with 1000GB storage only 50gram", usb.printData());
+        Assert.assertEquals("HDD usb with 64GB storage only 50gram", usb.printData());
     }
 
     @Test
     public void buildSSDUSB() {
-        director.buildSSDStorage(usbBuilder);
+        director.buildLightSSDStorage(usbBuilder);
         USB usb = usbBuilder.getResults();
-        Assert.assertEquals("SSD usb with 500GB storage only 20gram", usb.printData());
+        Assert.assertEquals("SSD usb with 16GB storage only 20gram", usb.printData());
     }
 }
