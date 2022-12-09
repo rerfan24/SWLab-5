@@ -1,5 +1,6 @@
 package PrototypeTest;
 
+import Prototype.Movies;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,15 +17,15 @@ public class CinemaMoviePrototypeTest {
     }
 
     @Test
-    public void removeMovieTest() {
+    public void removeMovieTest() throws CloneNotSupportedException{
         Movies cinemaAzadi = (Movies) released.clone();
         cinemaAzadi.removeMovie("Black Panther 2");
-        Assert.assertFalse(cinemaAzadi.getMoviesList().contains("Black Panther"));
-        Assert.assertTrue(released.getMoviesList().contains("Black Panther"));
+        Assert.assertFalse(cinemaAzadi.getMoviesList().contains("Black Panther 2"));
+        Assert.assertTrue(released.getMoviesList().contains("Black Panther 2"));
     }
 
     @Test
-    public void addMovieTest() {
+    public void addMovieTest() throws CloneNotSupportedException{
         Movies cinemaPardis = (Movies) released.clone();
         cinemaPardis.addMovie("Titanic");
         Assert.assertTrue(cinemaPardis.getMoviesList().contains("Titanic"));
